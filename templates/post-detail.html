@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %} {{post.username}} {% endblock %}
+
+{% block body %}
+
+{% load static %}
+
+<div class="flex-box mt-4">
+    <div class="card  post-detail-item mt-2">
+        <div class="card-body">
+          <a href="/profile/{{post.user.username}}">
+            <h5 class="card-title">@{{post.user.username}}</h5>
+          </a>
+
+          <p class="card-text"><small class="text-muted">{{post.post_date}}</small></p>
+        </div>
+
+        <div class="overflow-hidden">
+          <img class="card-img-bottom post-detail-item-image" src="{{post.image.url}}" alt="Card image cap" >
+        </div>
+
+        <div class="card-body">
+          <div class="post-detail-desc">
+          <p class="card-text"> {{post.description}} </p>
+          </div>
+          <hr>
+          <div>
+            <a class="ml-2" href="/like/{{post.id}}?postdetail=1">
+              <img src="{% static 'images/like.png' %}" width="35" height="35" alt="">
+            </a>
+            <div class="mt-1">
+              <span>{{post.likes}} Likes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+
+
+{% endblock %}

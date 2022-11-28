@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+    
+{% block body %}
+
+    <div class="container-fluid mt-4">
+
+        <div class="flex">
+            <div class="round-image">
+                <img class="profile-image" src="{{profile.profile_image.url}}" alt="">
+            </div>
+        </div>
+
+        <div class="flex">
+            <div class="profile-name mt-2">
+                <div class="profile-name-text">
+                    <strong>{{profile.name}}</strong>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="flex mt-4">
+
+            <div class="posts-follow-follwing">
+
+                <div class="posts-follow-follwing-count posts-count">
+                    <div>
+                        <strong>{{post_count}}</strong>
+                    </div>
+                    <div class="mt-1">
+                        <span>Post</span>
+                    </div>
+                </div>
+
+                <div class="posts-follow-follwing-count followers-count">
+                    <div>
+                        <strong>{{followers_count}}</strong>
+                    </div>
+                    <div class="mt-1">
+                        <span>followers</span>
+                    </div>
+                </div>
+
+                <div class="posts-follow-follwing-count following-count">
+                    <div>
+                        <strong>{{following_count}}</strong>
+                    </div>
+                    <div class="mt-1">
+                        <span>follwing</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="flex">
+            <div class="profile-boi mt-4">
+                <div class="profile-boi-text">
+                    {% if profile.bio %}
+                    <span>{{profile.bio}}</span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="flex">
+            <div class="follw-unfollw-btn-div mt-4">
+                <div class="profile-btn-text">
+
+                    {% if request.user.username == user.username %}
+                    <a href="/setting">
+                        <button class="follw-unfollw-btn btn btn-primary">Setting</button>
+                    </a>
+                    {% else %}
+                    <form action="/follow/" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="following_by" value="{{request.user.username}}">
+                        <input type="hidden" name="following_to" value="{{profile.user.username}}">
+
+                        <button class="follw-unfollw-btn btn btn-primary">{{button_text}}</button>
+
+                    </form>
+
+                    {% endif %}
+
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="profile-posts p-5">
+
+
+
+           
+                {% for post in posts %}
+
+
+                <div class="m-5">
+
+                    <a href="/postdetail/{{post.id}}" class="link-style-none">
+                        <div class="profile-post-card mt-2 mx-5">
+
+                            <div class="profile-post-image-div mt-2">
+                                <img src="{{post.image.url}}" alt="">
+                            </div>
+
+                            <div class="profile-post-desc m-2">
+                                <p>
+                                    {{post.description}}
+                                </p>
+                            </div>
+
+                        </div>
+                    </a>
+
+                </div>
+
+                {% endfor %}
+            
+        </div>
+
+
+
+    </div>
+
+{% endblock %}
+

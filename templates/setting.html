@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+
+{% block title %} Setting {% endblock %}
+
+{% block body %}
+<div class="container  mt-2">
+
+  <div class="flex">
+    <div class="round-image">
+      <img class="profile-image" src="{{profile.profile_image.url}}" alt="" width="20">
+    </div>
+  </div>
+  <form action="/setting/" method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+    <!-- 
+            <div class="form-group ">
+
+                <label class="form-label" for="customFile">Upload Profile Picture</label>
+                <input type="file" name="image" class="form-control" id="customFile" />
+            </div>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" name="name" value="{{profile.name}}" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Name">
+              </div>
+              
+            <div class="form-group">
+                <label for="boi">Boi</label>
+                <input type="text" name="bio" value="{{profile.bio}}" class="form-control" id="boi" aria-describedby="emailHelp" placeholder="Boi">
+              </div>    
+
+            
+
+            <div class="row">
+                
+              <div class="col">
+                <label for="gen">Gender</label>
+                  <input  name="gender" type="text" value="{{profile.gender}}" class="form-control" id="gen" placeholder="Gender">
+              </div>
+
+              <div class="col">
+                <label for="birthdate">Birth Date</label>
+                  <input  name="birthdate" type="date" value="{{birthdate}}" class="form-control" id="birthdate" placeholder="Birth Date">
+              </div>
+
+            </div>
+            
+
+            <div class="form-group">
+                <label for="add">Address</label>
+                <input name="address" type="text" value="{{profile.address}}" class="form-control address-box" id="add" aria-describedby="emailHelp"   placeholder="Address">
+              </div>
+
+              <div class="button-center">
+                <button type="submit" class="btn btn-primary px-5 my-2">Submit</button>
+                
+            </div>
+             -->
+
+
+
+
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label class="form-label" for="customFile">Upload Profile Picture</label>
+        <input type="file" name="image" class="form-control" id="customFile" />
+      </div>
+
+      <div class="form-group col-md-12">
+        <label for="name">Name</label>
+        <input type="text" name="name" value="{{profile.name}}" class="form-control" id="name"
+          aria-describedby="emailHelp" placeholder="Name">
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label for="boi">Boi</label>
+      <input type="text" name="bio" value="{{profile.bio}}" class="form-control" id="boi" aria-describedby="emailHelp"
+        placeholder="Boi">
+    </div>
+
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="gen">Gender</label>
+        <input name="gender" type="text" value="{{profile.gender}}" class="form-control" id="gen" placeholder="Gender">
+      </div>
+
+
+      <div class="form-group col-md-6">
+        <label for="birthdate">Birth Date</label>
+        <input name="birthdate" type="date" value="{{birthdate}}" class="form-control" id="birthdate"
+          placeholder="Birth Date">
+      </div>
+
+    </div>
+
+
+    <div class="form-group">
+      <label for="add">Address</label>
+      <input name="address" type="text" value="{{profile.address}}" class="form-control" id="add"
+        aria-describedby="emailHelp" placeholder="Address">
+    </div>
+
+
+    <div class="form-group">
+      <div class="button-center">
+        <button type="submit" class="btn btn-primary px-5 my-2">Submit</button>
+        <!-- <p class="btn btn-danger px-5 my-2">Delete Account</p> -->
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </form>
+</div>
+
+{% endblock %}

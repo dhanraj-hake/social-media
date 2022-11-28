@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Friends {% endblock %}
+
+{% block body %}
+
+
+{% for user_profile in all_profiles%}
+
+<div class="container">
+
+    
+    <a href="/profile/{{user_profile.user.username}}">
+        <div class="card w-75 m-4">
+            <div class="card-header">
+                @{{user_profile.user.username}}
+            </div>
+            <div class="card-body">
+                <div class="flex-start">
+                    <img src="{{user_profile.profile_image.url}}" width="50" height="50" alt="">         
+                    <h5 class="card-title px-4">{{user_profile.name}}</h5>
+                </div>
+                
+            </div>
+        </div>
+    </a>
+    
+</div>
+
+{% endfor %}
+
+{% endblock %}

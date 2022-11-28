@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="/static/css/style.css">
+  
+  <title>Sicial Site</title>
+</head>
+
+<body>
+  
+  <div id="navbarid">
+
+
+    <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-secondary">
+      <a class="navbar-brand" href="/">Home</a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="mx-2">
+
+        <a href="https://github.com/dhanraj-hake/social-media" target="_blank">
+          <button class="btn btn-outline-secondary text-light">
+            <img src="/static/images/git2.png" alt="" width="35" height="35">
+            Source Code 
+          </button>
+        </a>
+        </div>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0" action="/search" method="get">
+          <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-success my-2 my-sm-0 mx-2" type="submit">Search</button>
+        </form>
+
+        <div>
+
+          <a href="/friends">
+            <button class="btn btn- my-2 my-sm-0 mx-2 ">Friends</button>
+          </a>
+          </div>
+
+        <a href="/setting">
+          <button class="btn btn-primary my-2 my-sm-0 mx-2 ">Setting</button>
+        </a>
+        <div>
+
+          <a href="logout">
+            <button class="btn btn-danger my-2 my-sm-0 mx-2 ">Logout</button>
+          </a>
+        </div>
+
+        <div>
+
+          <a class="navbar-brand ml-4 display-none" href="/profile/{{request.user.username}}">
+            <img src="{{user_profile.profile_image.url}}" width="35" height="35" alt="">
+          </a>
+        </div>
+
+      </div>
+    </nav>
+
+
+
+  </div>
+
+  <div class="container flex-box">
+    <div class="posts">
+      {% for post in posts %}
+
+
+      <div class="card item mt-2">
+        <div class="card-body">
+          <a href="/profile/{{post.user.username}}">
+            <h5 class="card-title">@{{post.user.username}}</h5>
+          </a>
+
+          <p class="card-text"><small class="text-muted">{{post.post_date}}</small></p>
+        </div>
+
+        <div class="overflow-hidden">
+
+          <img class="card-img-bottom" src="{{post.image.url}}" alt="Card image cap" >
+        </div>
+
+        <div class="card-body">
+          <div class="post-desc">
+          <p class="card-text"> {{post.description}} </p>
+          </div>
+          <hr>
+          <div>
+            <a class="ml-2" href="/like/{{post.id}}">
+              <img src="{% static 'images/like.png' %}" width="35" height="35" alt="">
+            </a>
+            <div class="mt-1">
+              <span>{{post.likes}} Likes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+
+      {% endfor %}
+
+    </div>
+  </div>
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
