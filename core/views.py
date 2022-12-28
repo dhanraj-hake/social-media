@@ -236,7 +236,7 @@ def profile(request, username):
     params = {
         "user" : user,
         "profile" : profile,
-        "posts":posts,
+        "posts":posts[::-1],
         "post_count" : post_count,
         "following_count" : following_count,
         "followers_count" : followers_count,
